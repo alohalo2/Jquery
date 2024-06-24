@@ -30,44 +30,39 @@
         */
        
        $(() => {
+            const now = new Date();
+            let second = now.getSeconds();
+            let minute = now.getMinutes();
+            let hour = now.getHours();
         
-            const formatTime = (time) => {
-                return time < 10 ? '0' + time : time;
-            }
+            $("#clock").html(`${formatTime(hour)}:${formatTime(minute)}.${formatTime(second)}`);
      
-            const startClock = () => {
-                const now = new Date();
-                 let second = formatTime(now.getSeconds);
-                 let minute = formatTime(now.getMinutes);
-                 let hour = formatTime(now.getHours);
+            let interval = setInterval(() => {
                 
-                $("#clock").html(`${hour}:${minute}.${second}`);
-     
-             }
-     
-             startClock();
-
-            const interval = setInterval(() => {
+                second++;
                 
-                // second++;
+                if(second >= 60) {
+                    minute++;
+                    second = 0;
+                }
+                if(minute >= 60) {
+                    hour++;
+                    minute = 0;
+                }
+                if(hour > 24) {
+                    hour = 0;
+                }
                 
-                // if(second >= 60) {
-                //     minute++;
-                //     second = 0;
-                // }
-                // if(minute >= 60) {
-                //     hour++;
-                //     minute = 0;
-                // }
-                // if(hour > 24) {
-                //     hour = 0;
-                // }
-                
-                startClock();
+                $("#clock").text(`${formatTime(hour)}:${formatTime(minute)}.${formatTime(second)}`);
 
             },1000);
-
+            
         });
+        
+        function formatTime(time) {
+            return time >= 10 ?  time : `0${time}`;
+        }
+
     </script>
 </body>
 </html>
