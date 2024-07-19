@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="test.css">
+    <script src="../../js/jquery-3.7.1.min.js"></script>
+</head>
+<body>
+    <p>Hello, Jquery!</p>
+    <div class="box"></div>
+    <button id="myButton" type="button">클릭</button>
+    <script>
+        $(() => {
+            $("p").css("color", "blue");
+            $("#myButton").on("click", () => {
+                // alert("버튼을 클릭했습니다.");
+                // $("p").hide("hello");
+                // $("p").show("jquery");
+
+                // $("p").slideUp("hello");
+                // $("p").slideDown("jquery");
+
+                $("p").fadeOut("hello");
+                $("p").fadeIn("jquery");
+
+            });
+        });
+    </script>
+</body>
+</html>
